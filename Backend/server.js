@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cors from 'cors';
 import { connectDB } from "./DB/mongoDB.js";
-const app = express();
+const app = express(); 
 
 
 // get controllers from controller server
