@@ -14,6 +14,7 @@ import { authorizedRole } from './middleware/roleVerify.js';
 import { validation } from './middleware/authValidationParse.js';
 import { registerSchema , loginSchema } from './validation/authvalidation.js'
 import { getAllStudent , createNotice , getNotice , addStudyResource , getStudyResource , createEvent , getAllEvent , getRecentActivity , postStudentQuery , getStudentQuery , respondToQuery} from './controller/facultyController.js'
+import { getRecentNoticeActivity } from "./controller/studentController.js";
 import {upload} from './utils/multerConfig.js'
  
 
@@ -40,7 +41,8 @@ app.route("/v1/check-auth").get(checkAuth)
 
 // route for faculty service
 app.route("/v1/allstudents").get(checkToken , authorizedRole("faculty" , "student") , getAllStudent)
-app.route("/v1/getActivity").get(checkToken , getRecentActivity )
+app.route("/v1/getActivity").get(checkToken , getRecentActivity );
+app.route("/v1/getNoticeActivity").get(checkToken , getRecentNoticeActivity );
 // notice
 app.route("/v1/notice").post(checkToken , authorizedRole("faculty") , createNotice)
 app.route("/v1/getnotice").get(checkToken , authorizedRole("faculty" , "student") , getNotice)
