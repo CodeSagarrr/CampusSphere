@@ -20,3 +20,22 @@ export const getRecentNoticeActivity = async (req, res) => {
         res.status(500).json({ message: "Failed to load recent activities", error });
     }
 };
+
+export const studentRegisterEvent = async(req , res) => {
+    const { queryId } = req.params;
+
+    try {
+        const updateQuery = await eventModel.findByIdAndUpdate(
+            queryId,
+            {
+                participants : queryId,
+                isParticipated : true,
+            },
+            { new: true }
+        );
+        res.status(200).json({message : "register successfully" , user : updateQuery});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: "Failed to load recent activities", error });
+    }
+}

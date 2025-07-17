@@ -85,6 +85,7 @@ const eventSchema = mongoose.Schema({
         ref: "UserAuth",
         required: true,
     },
+    participants :[{ type: mongoose.Schema.Types.ObjectId, ref : "UserAuth" }],
     isParticipated: {
         type: Boolean,
         default: false

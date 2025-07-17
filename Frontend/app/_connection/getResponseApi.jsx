@@ -32,10 +32,18 @@ export const sendEvents = async(req , payLoad) => {
     }
 }
 
-
 export const sendResourceData = async(req , payLoad) => {
     try {
         const res = await axios.post(req , payLoad , {withCredentials : true})
+       return res;
+    } catch (error) {
+        console.error("Error from sending request" , error.message)
+    }
+}
+
+export const studentRegisterEvent = async(req ,) => {
+    try {
+        const res = await axios.patch(req , {withCredentials : true})
        return res;
     } catch (error) {
         console.error("Error from sending request" , error.message)

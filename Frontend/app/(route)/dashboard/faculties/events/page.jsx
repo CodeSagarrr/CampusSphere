@@ -46,7 +46,7 @@ const EventsPage = () => {
       case 'sports': return 'bg-orange-500/20 text-orange-400 border-orange-400/30';
       case 'seminar': return 'bg-purple-500/20 text-purple-400 border-purple-400/30';
       case 'cultural': return 'bg-pink-500/20 text-pink-400 border-pink-400/30';
-      default: return 'bg-slate-500/20 text-slate-400 border-slate-400/30';
+      default: return 'bg-cyan-500/20 text-cyan-400 border-cyan-400/30';
     }
   };
 
@@ -315,7 +315,7 @@ const EventsPage = () => {
               <div>
                 <p className="text-slate-400 text-xs sm:text-sm">Registered</p>
                 <p className="text-xl sm:text-2xl font-bold text-white">
-                  {getEvents.filter(e => e.isParticipated === false).length}
+                  {getEvents.filter(e => e.isParticipated === true).length}
                 </p>
               </div>
               <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-400" />

@@ -14,7 +14,7 @@ import { authorizedRole } from './middleware/roleVerify.js';
 import { validation } from './middleware/authValidationParse.js';
 import { registerSchema , loginSchema } from './validation/authvalidation.js'
 import { getAllStudent , createNotice , getNotice , addStudyResource , getStudyResource , createEvent , getAllEvent , getRecentActivity , postStudentQuery , getStudentQuery , respondToQuery} from './controller/facultyController.js'
-import { getRecentNoticeActivity } from "./controller/studentController.js";
+import { getRecentNoticeActivity , studentRegisterEvent} from "./controller/studentController.js";
 import {upload} from './utils/multerConfig.js'
  
 
@@ -50,8 +50,9 @@ app.route("/v1/getnotice").get(checkToken , authorizedRole("faculty" , "student"
 app.route("/v1/addstudyresource").post(checkToken , authorizedRole("faculty" , "student"), upload.single("file") , addStudyResource)
 app.route("/v1/getstudyresource").get(checkToken , authorizedRole("faculty" , "student") , getStudyResource)
 // event 
-app.route("/v1/createevent").post(checkToken , authorizedRole("faculty" , "student") , createEvent)
-app.route("/v1/getallevents").get(checkToken , authorizedRole("faculty" , "student") , getAllEvent)
+app.route("/v1/createevent").post(checkToken , authorizedRole("faculty" , "student") , createEvent);
+app.route("/v1/updateEvent/:queryId").patch(checkToken , authorizedRole("student") , studentRegisterEvent)
+app.route("/v1/getallevents").get(checkToken , authorizedRole("faculty" , "student") , getAllEvent);
 // student query
 app.route("/v1/studentqueries").post(checkToken , authorizedRole("faculty" , "student") , postStudentQuery);
 app.route("/v1/getstudentqueries").get(checkToken , authorizedRole("faculty" , "student") , getStudentQuery);
