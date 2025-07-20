@@ -43,13 +43,13 @@ const StudentDashboard= () => {
     { label: 'Unread Notices', value: notices.length , icon: Bell, color: 'text-yellow-400' },
     { label: 'Downloaded Resources', value : getResources.length , icon: BookOpen, color: 'text-green-400' },
     { label: 'Upcoming Events', value: getEvents.length, icon: Calendar, color: 'text-cyan-400' },
-    { label: 'Pending Queries', value: pendingQueries, icon: MessageSquare, color: 'text-red-400' },
+    { label: 'Pending Queries' , value: pendingQueries, icon: MessageSquare, color: 'text-red-400' },
   ];
 
   return (
     <div className="flex min-h-screen">      
       <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
-        <div className="mb-6 lg:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 lg:mb-8 gap-4">
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
             Welcome back, {user?.firstname} {user?.lastname}
           </h1>
@@ -57,7 +57,7 @@ const StudentDashboard= () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 lg:mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-6 lg:mb-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -78,7 +78,7 @@ const StudentDashboard= () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Recent Notices */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-slate-900 backdrop-blur-sm rounded-xl border border-slate-700 p-4 sm:p-6">

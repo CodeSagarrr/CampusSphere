@@ -195,13 +195,13 @@ export default function Homepage() {
 
       {/* Hero Section */}
       <section className="relative z-10 pt-8 sm:pt-12 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 w-full">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto sm:px-6 lg:px-8">
           <div className="grid lg:place-content-center items-center">
             <div className="w-[100vw] flex flex-col items-center animate-slide-up text-center">
-              <h1 className="text-3xl flex justify-center sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-1">
+              <h1 className="text-3xl flex sm:flex-row flex-col justify-center sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-1">
                 <SplitText
                   text="CampusSphere - "
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-1"
+                  className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-1"
                   delay={100}
                   duration={0.6}
                   ease="power3.out"
@@ -212,10 +212,10 @@ export default function Homepage() {
                   rootMargin="-100px"
                   textAlign="center"
                 />
-                <span className="block ml-2 text-emerald-400">Simplifying Campus</span>
+                <span className="block ml-1 text-emerald-400">Simplifying Campus</span>
               </h1>
               <span className="block text-3xl  sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-1">Communication</span>
-              <p className="text-lg sm:text-xl text-center text-slate-300 mb-6 sm:mb-8 leading-relaxed max-w-2xl mt-4 mx-auto lg:mx-0">
+              <p className="text-lg  sm:text-xl text-center text-slate-300 mb-6 sm:mb-8 leading-relaxed max-w-4xl mt-4 mx-auto lg:mx-0 px-2">
                 Connect with your campus community effortlessly. Stay updated with announcements, access role-based dashboards, and receive real-time notifications.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
