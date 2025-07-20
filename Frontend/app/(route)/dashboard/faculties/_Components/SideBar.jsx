@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import SplitText from '../../../../../SplitText/SplitText.jsx';
 import { logoutRequest } from "../../../../_connection/RequestApi.jsx";
+import Link from 'next/link.js';
 import { 
   LayoutDashboard, 
   Bell, 
@@ -13,7 +14,6 @@ import {
   GraduationCap,
   X
 } from 'lucide-react';
-import Link from 'next/link';
 import { usePathname , useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -70,9 +70,9 @@ const Sidebar = () => {
    `}>
      {/* Logo Section */}
      <div className="p-4 border-b border-slate-700/50">
+     <Link href={"/"}>
        <div className="flex items-center space-x-2">
          <GraduationCap className="h-8 w-8 text-emerald-400" />
-         <Link href={"/"}>
         <span className="text-xl font-bold text-white"> 
          <SplitText
               text="CampusSphere"
@@ -87,33 +87,34 @@ const Sidebar = () => {
               rootMargin="-100px"
               textAlign="center"
             /></span>
-        </Link>
        </div>
+       </Link>
      </div>
+     
 
      {/* Navigation */}
      <div className="p-4 flex flex-col h-full">
        <nav className="space-y-2 flex-1">
-         {facultyMenuItems.map((item) => {
-           const Icon = item.icon;
-           const isActive = location.pathname === item.path;
-           
-           return (
-             <Link
-               key={item.path}
-               href={item.path}
-               onClick={() => setIsMobileMenuOpen(false) }
-               className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                 isActive
-                   ? 'bg-gradient-to-r from-green-400/20 to-emerald-600/20 bg-emerald-900 border border-green-400/30'
-                   : 'text-slate-300 hover:text-white hover:bg-slate-800/50 border border-transparent hover:border-slate-700'
-               }`}
-             >
-               <Icon className={`h-5 w-5 ${isActive ? 'text-emerald-400 bg-slate-800' : ''}`} />
-               <span className={` font-medium ${isActive ? 'text-emerald-400' : ''}`}>{item.label}</span>
-             </Link>
-           );
-         })}
+       {facultyMenuItems.map((item , index) => {
+              const Icon = item.icon;
+              const isActive = location === item.path;
+              
+              return (
+                <Link
+                  key={index}
+                  href={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? 'bg-gradient-to-r to-emerald-600/20 text-neon-green border border-green-400/30'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50 border border-transparent hover:border-slate-700'
+                  }`}
+                >
+                  <Icon className={`h-5 w-5 ${isActive ? 'text-green-400' : ''}`} />
+                  <span className="font-medium">{item.label}</span>
+                </Link>
+              );
+            })}
        </nav>
        
        {/* Logout Button */}

@@ -95,7 +95,7 @@ const Sidebar = () => {
        <nav className="space-y-2 flex-1">
          {studentsMenuItems.map((item) => {
            const Icon = item.icon;
-           const isActive = location.pathname === item.path 
+           const isActive = location === item.path 
            return (
             <Link
             key={item.path}
@@ -106,7 +106,7 @@ const Sidebar = () => {
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/50 border border-transparent hover:border-slate-700'
             }`}
           >
-            <Icon className={`h-5 w-5 ${isActive ? 'text-neon-green' : ''}`} />
+            <Icon className={`h-5 w-5 ${isActive ? 'text-green-200' : ''}`} />
             <span className="font-medium">{item.label}</span>
           </Link>
            );

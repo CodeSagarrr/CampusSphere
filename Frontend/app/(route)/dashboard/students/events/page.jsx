@@ -50,6 +50,8 @@ const EventsPage = () => {
     }
   }
 
+  console.log(getEvents)
+  console.log(user)
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -89,7 +91,9 @@ const EventsPage = () => {
               <div>
                 <p className="text-slate-400 text-xs sm:text-sm">Registered</p>
                 <p className="text-xl sm:text-2xl font-bold text-white">
-                  {getEvents.filter(e => e.isParticipated === true).length}
+                {getEvents.reduce((total, event) => {
+                  return total + (event.participants?.length || 0);
+                }, 0)}
                 </p>
               </div>
               <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-400" />
@@ -110,7 +114,9 @@ const EventsPage = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-slate-400 text-xs sm:text-sm">Participants</p>
-                <p className="text-xl sm:text-2xl font-bold text-white">{getEvents.filter(e => e.isParticipated === true).length}</p>
+                <p className="text-xl sm:text-2xl font-bold text-white">{getEvents.reduce((total, event) => {
+                  return total + (event.participants?.length || 0);
+                }, 0)}</p>
               </div>
               <Users className="h-6 w-6 sm:h-8 sm:w-8 text-red-400" />
             </div>
@@ -167,7 +173,7 @@ const EventsPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-                {event.isParticipated ? (
+                {event.participants.includes(user.id) ? (
                   <button className="flex-1 flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-neon-green/20 text-neon-green rounded-lg border border-neon-green/30 cursor-default text-sm sm:text-base">
                     <CheckCircle className="h-3 w-4 sm:h-4 sm:w-4" />
                     <span>Registered</span>

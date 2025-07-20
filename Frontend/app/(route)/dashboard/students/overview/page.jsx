@@ -18,7 +18,8 @@ const StudentDashboard= () => {
   const { user , notices , getResources , getEvents , getStudentQueries} = useAppContext();
   const pendingQueries = getStudentQueries.filter((query) => query.isAnswered === false).length;
   const [noticeActivity , setNoticeActivity] = useState([]);
-
+  const [eventActivity , setEventActivity] = useState([]);
+  const [queryActivity , setQueryActivity] = useState([]);
 
   useEffect(() => {
     axios.get("/v1/getNoticeActivity").then(res => {
@@ -26,15 +27,18 @@ const StudentDashboard= () => {
     });
   } , [])
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+  useEffect(() => {
+    axios.get("/v1/getEventActivity").then(res => {
+      setEventActivity(res.data);
     });
-  }; 
+  } , [])
+
+  useEffect(() => {
+    axios.get("/v1/getQueryActivity").then(res => {
+      setQueryActivity(res.data);
+    });
+  } , [])
+
   const stats = [
     { label: 'Unread Notices', value: notices.length , icon: Bell, color: 'text-yellow-400' },
     { label: 'Downloaded Resources', value : getResources.length , icon: BookOpen, color: 'text-green-400' },
@@ -85,28 +89,26 @@ const StudentDashboard= () => {
                 </Link>
               </div>
               <div className="space-y-3 sm:space-y-4">
-                { noticeActivity.length > 0 && noticeActivity.map((notice, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg transition-colors ${
-                      notice.read ? 'bg-slate-700/30' : 'bg-slate-700/50 border border-green-200/20'
-                    }`}
-                  >
-                    <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
-                      notice.priority === 'high' ? 'bg-red-400' :
-                      notice.priority === 'medium' ? 'bg-yellow-400' : 'bg-green-400'
-                    }`}></div>
-                    <div className="flex-1 min-w-0">
-                      <p className={`font-medium text-sm sm:text-base truncate ${notice.read ? 'text-slate-300' : 'text-white'}`}>
-                        {notice.title}
-                      </p>
-                      <p className="text-slate-400 text-xs sm:text-sm">{moment(notice.createdAt).format('lll')}</p>
-                    </div>
-                    <div className="text-slate-400 flex-shrink-0">
-                    <Bell className="text-yellow-400 w-4 h-4" />
-                    </div>
-                  </div>
-                ))}
+                { noticeActivity.length > 0 && noticeActivity.map((notice , index) => 
+                   <div
+                   key={index}
+                   className={`flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg transition-colors bg-slate-800 border border-slate-600`}
+                 >
+                   <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
+                     notice.priority === 'high' ? 'bg-red-400' :
+                     notice.priority === 'medium' ? 'bg-yellow-400' : 'bg-green-400'
+                   }`}></div>
+                   <div className="flex-1 min-w-0">
+                     <p className={`font-medium text-sm sm:text-base truncate`}>
+                       {notice.title}
+                     </p>
+                     <p className="text-slate-400 text-xs sm:text-sm">{moment(notice.createdAt).format('lll')}</p>
+                   </div>
+                   <div className="text-slate-400 flex-shrink-0">
+                   <Bell className="text-yellow-400 w-4 h-4" />
+                   </div>
+                 </div>
+              )}
               </div>
             </div>
 
@@ -114,14 +116,14 @@ const StudentDashboard= () => {
             <div className="bg-slate-900 backdrop-blur-sm rounded-xl border border-slate-700 p-4 sm:p-6">
               <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Query Status</h2>
               <div className="space-y-3 sm:space-y-4">
-                {getStudentQueries.map((assignment, index) => (
+                {queryActivity.map((assignment, index) =>  (
                   <div
                     key={index}
                     className="flex items-center justify-between p-3 sm:p-4 bg-slate-700/30 rounded-lg"
                   >
                     <div className="flex-1 min-w-0 mr-3">
-                      <p className="text-white font-medium text-sm sm:text-base truncate">{assignment.questionTitle}</p>
-                      <p className="text-slate-400 text-xs sm:text-sm">{assignment.subject}</p>
+                      <p className="text-white font-medium text-sm sm:text-base truncate">{assignment.question}</p>
+                      <p className="text-slate-400 text-xs sm:text-sm">{assignment.title}</p>
                     </div>
                     <div className="text-right mr-3 sm:mr-4 flex-shrink-0">
                       <p className="text-xs sm:text-sm text-slate-400">Due: {moment(assignment.createdAt).format("lll")}</p>
@@ -164,12 +166,12 @@ const StudentDashboard= () => {
             <div className="bg-slate-900 backdrop-blur-sm rounded-xl border border-slate-700 p-4 sm:p-6">
               <h2 className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">Upcoming Events</h2>
               <div className="space-y-3 sm:space-y-4">
-                {getEvents.map((event, index) => (
+                {eventActivity.map((event, index) => (
                   <div key={index} className="p-3 bg-slate-700/30 rounded-lg">
-                    <p className="text-white font-medium text-xs sm:text-sm">{event.title}</p>
-                    <p className="text-emerald-400 text-xs mt-1">{formatDate(event.date)} at {event.time}</p>
-                    <p className="text-slate-400 text-xs">{event.location}</p>
-                  </div>
+                  <p className="text-white font-medium text-xs sm:text-sm">{event.title}</p>
+                  <p className="text-emerald-400 text-xs mt-1">{moment(event.createdAt).format("lll")}</p>
+                  <p className="text-slate-400 text-xs mt-1">{event.location}</p>
+                </div>
                 ))}
               </div>
             </div>
@@ -184,7 +186,7 @@ const StudentDashboard= () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300 text-sm sm:text-base">Assignments</span>
-                  <span className="text-neon-cyan font-semibold">{getStudentQueries.length}/10</span>
+                  <span className="text-neon-cyan font-semibold">{getStudentQueries.length}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300 text-sm sm:text-base">Current GPA</span>

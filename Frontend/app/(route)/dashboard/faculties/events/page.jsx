@@ -358,7 +358,7 @@ const EventsPage = () => {
                  
                 </div>
                 <div className="text-right text-xs sm:text-sm text-slate-400">
-                  <p>{event.isParticipated ? `${getEvents.filter(e => e.isParticipated === true ).length}/300 ` : '0/300'}</p>
+                  <p>{`${event.participants.length}/300`}</p>
                   <p className="text-xs">participants</p>
                 </div>
               </div>

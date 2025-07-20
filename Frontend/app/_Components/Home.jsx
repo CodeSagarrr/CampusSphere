@@ -144,7 +144,7 @@ export default function Homepage() {
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               <a href="#about" className="text-slate-300 hover:text-emerald-400 transition-colors duration-200">About</a>
               <a href="#features" className="text-slate-300 hover:text-emerald-400 transition-colors duration-200">Features</a>
-              <a href="#contact" className="text-slate-300 hover:text-emerald-400 transition-colors duration-200">Contact</a>
+              <a href="#testimonials" className="text-slate-300 hover:text-emerald-400 transition-colors duration-200">Testimonials</a>
               <Link href={"/login"} className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors duration-200">
                 Login
               </Link>

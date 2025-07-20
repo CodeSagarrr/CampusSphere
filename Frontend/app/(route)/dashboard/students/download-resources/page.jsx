@@ -98,9 +98,9 @@ const StudyResources = () => {
         {/* Resources Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 hover:border-emerald-400">
           {filteredResources.map((resource , index) => (
-            <div
+            <div 
               key={index}
-              className="bg-slate-900 backdrop-blur-sm rounded-xl border border-slate-700 p-4 sm:p-6 hover:border-neon-green/50 transition-all duration-300 hover:shadow-lg hover:shadow-neon-green/10"
+              className=" bg-slate-900 text-white backdrop-blur-sm rounded-xl border border-slate-700 p-4 sm:p-6 hover:border-green-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-400/10"
             >
               <div className="flex items-start justify-between mb-3 sm:mb-4">
                 <div className="flex items-center space-x-2 sm:space-x-3">

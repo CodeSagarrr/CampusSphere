@@ -149,13 +149,14 @@ export const getRecentActivity = async (req, res) => {
 // GET and POST student query
 
 export const postStudentQuery = async (req, res) => {
-    const { subject, questionTitle, questionContent } = req.body;
-
+    const { subject, questionTitle,questionContent , to } = req.body;
+    console.log(subject, questionTitle,questionContent , to )
     try {
         const newQuery = await StudentQuery({
             subject,
             questionTitle,
             questionContent,
+            to,
             askedBy: req.user.id
         })
         await newQuery.save();

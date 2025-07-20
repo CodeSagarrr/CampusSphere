@@ -118,6 +118,11 @@ const studentQuerySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    to : {
+        type : String,
+        enum : ["Faculties" , "Hod"],
+        default : "Faculties"
+    },
     askedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "UserAuth",
