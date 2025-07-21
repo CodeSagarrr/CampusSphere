@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: "/v1/:path*",
-                destination: "http://localhost:8000/v1/:path*",
+                destination: "https://campussphere-project.onrender.com/v1/:path*",
             }
         ]
     }
