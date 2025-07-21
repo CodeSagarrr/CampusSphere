@@ -121,7 +121,7 @@ export default function Homepage() {
       <nav className="relative z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50  top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3 sm:py-4">
-            <Link href={"/"} className="flex items-center space-x-2">
+            <Link href={"/"} className="flex items-center space-x-2 space-y-2">
               <GraduationCap className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-400" />
               <span className="text-lg sm:text-xl font-bold">
                 <SplitText
