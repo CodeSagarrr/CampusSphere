@@ -43,6 +43,10 @@ export const AppContextProvider = ({ children }) => {
 
     }
     getLoginUser();
+    const interval = setInterval(() => {
+      getLoginUser()
+    }, 1000)
+    return () => clearInterval(interval);
   }, [])
 
   useEffect(() => {

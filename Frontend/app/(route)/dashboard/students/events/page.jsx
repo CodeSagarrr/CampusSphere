@@ -20,7 +20,7 @@ const EventsPage = () => {
   const [getActivity, setGetActivity] = useState([]);
 
   useEffect(() => {
-    axios.get("/v1/getNoticeActivity")
+    axios.get("/v1/getEventActivity")
       .then((res) => {
         setGetActivity(res.data)
       })
@@ -50,8 +50,6 @@ const EventsPage = () => {
     }
   }
 
-  console.log(getEvents)
-  console.log(user)
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
