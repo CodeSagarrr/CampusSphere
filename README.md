@@ -39,7 +39,8 @@ CampusSphere is a full stack student-faculty portal designed to streamline acade
 
 ## 📸 Screenshots
 
-> <img width="1919" height="666" alt="Screenshot 2025-07-13 003307" src="https://github.com/user-attachments/assets/1b54e388-22e0-48b0-8079-d2f5a046472b" />
+> <img width="1910" height="660" alt="Screenshot 2025-07-20 174617" src="https://github.com/user-attachments/assets/5d4df2e6-c3dd-47c0-9194-6f0e226e7be6" />
+
 
 
 ---
