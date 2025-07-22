@@ -177,9 +177,9 @@ export default function Homepage() {
                 {/* Mobile Dashboard Links */}
 
                 <a href="#contact" className="text-slate-300 hover:text-emerald-400 transition-colors duration-200 py-1">Contact</a>
-                <button className="text-emerald-400 hover:text-emerald-300 font-medium text-left transition-colors duration-200 py-1">
+                <Link href={"/login"} className="text-emerald-400 hover:text-emerald-300 font-medium text-left transition-colors duration-200 py-1">
                   Login
-                </button>
+                </Link>
                 {
                   isAuthenticated ? <Link href={`/dashboard/${userRole === 'faculty' ? 'faculties' : 'students'}`} className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 xl:px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/25">
                     Get Started
