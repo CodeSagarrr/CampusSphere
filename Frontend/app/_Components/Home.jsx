@@ -36,7 +36,6 @@ export default function Homepage() {
         if (response?.status === 200) {
           setIsAuthenticated(true);
           setUserRole(response.data?.role)
-          console.log(response.data)
         } else {
           setIsAuthenticated(false);
         }
