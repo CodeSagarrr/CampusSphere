@@ -8,7 +8,7 @@ CampusSphere is a full stack student-faculty portal designed to streamline acade
 
 🚀 Coming soon...
 
-https://campus-sphere-one.vercel.app/login
+https://campus-sphere-one.vercel.app/
 
 ## 🛠️ Tech Stack
 
